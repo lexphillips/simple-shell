@@ -10,17 +10,21 @@ LDFLAGS = -lreadline
 # Executable name
 TARGET = ssi
 
+# Source and object files
+SRCS = ssi.c builtins.c background.c utils.c
+OBJS = $(SRCS:.c=.o)
+
 # Default target
 all: $(TARGET)
 
-# Compile 
-ssi.o: ssi.c
-	$(CC) $(CFLAGS) -c ssi.c -o ssi.o
-
 # Link
-$(TARGET): ssi.o
-	$(CC) ssi.o -o $(TARGET) $(LDFLAGS)
+$(TARGET): $(OBJS)
+	$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)
+
+# Compile rule
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean
-clean: 
+clean:
 	rm -f *.o $(TARGET)
