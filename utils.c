@@ -116,7 +116,7 @@ pid_t create_process(char *cmd, char **argv, int is_bg) {
  * @param cmd Command to execute.
  * @param argv Argument list.
  * @param is_bg Flag indicating if process runs in background.
- * @return Status code indicating success or failure.
+ * @return Status code indicating success-continue, success-exit, or failure.
  */
 shell_status run_command(char *cmd, char **argv, int is_bg) {
     pid_t pid = create_process(cmd, argv, is_bg);
