@@ -25,7 +25,7 @@ shell_status cmd_bg(char **argv) {
     pid_t pid = create_process(sub_argv[0], sub_argv, 1);
     if (pid < 0) return STATUS_EXIT_FAILURE;
 
-    printf("Starting background process: PID %d\n", pid);
+    // printf("Starting background process: PID %d\n", pid);
 
     bg_process *new_node = malloc(sizeof(bg_process));
     if (!new_node) {
